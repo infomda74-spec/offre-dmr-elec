@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposition DMR ELEC × MDA74 | Stratégie Digitale IRVE Haute-Savoie</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  
+  :root {
+    --bg: #EFEFEF;
+    --bg-alt: #F7F7F7;
+    --bg-card: #FFFFFF;
+    --text: #141533;
+    --text-dim: #5A5A6E;
+    --text-light: #9CA3AF;
+    --accent: #DB122C;
+    --accent-dark: #781430;
+    --accent-light: rgba(219,18,44,0.08);
+    --border: #DCDCDC;
+    --border-light: #EFEFEF;
+  }
+  
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  
+  /* NAVBAR */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(239,239,239,0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+  .nav-inner { display:flex; justify-content:space-between; align-items:center; gap: 12px; }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.4rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent); }
+  .nav-actions { display:flex; align-items:center; gap: 10px; }
+  .nav-call {
+    display: inline-flex; align-items:center; gap: 8px;
+    background: transparent;
+    color: var(--text); padding: 10px 18px;
+    border-radius: 8px; text-decoration:none;
+    font-weight: 600; font-size: 0.9rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-call:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff; padding: 10px 22px;
+    border-radius: 8px; text-decoration:none;
+    font-weight: 600; font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items:center;
+    padding-top: 100px;
+    position: relative;
+  }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items:center; }
+  
+  .hero-badge {
+    display: inline-flex; align-items:center; gap: 8px;
+    background: var(--accent-light);
+    border: 1px solid rgba(219,18,44,0.2);
+    padding: 8px 16px; border-radius: 100px;
+    font-size: 0.85rem; color: var(--accent);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .hero-badge::before {
+    content:''; width:8px; height:8px; border-radius:50%;
+    background: var(--accent); 
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+  .hero h1 .accent {
+    color: var(--accent);
+    font-style: italic;
+  }
+  .hero p {
+    font-size: 1.2rem; color: var(--text-dim);
+    margin-bottom: 40px; max-width: 640px;
+    line-height: 1.5;
+  }
+  .hero-meta {
+    display:flex; flex-wrap:wrap; gap: 10px; margin-bottom: 36px;
+    font-size: 0.85rem; color: var(--text-dim);
+  }
+  .hero-meta div {
+    display:flex; align-items:center; gap:6px;
+    padding: 6px 12px; background: #fff;
+    border: 1px solid var(--border); border-radius: 6px;
+    font-weight: 500;
+  }
+  
+  .hero-actions { display:flex; flex-wrap:wrap; gap: 14px; align-items:center; }
+  
+  .btn-primary {
+    display: inline-flex; align-items:center; gap: 10px;
+    background: var(--text);
+    color: #fff; padding: 18px 36px;
+    border-radius: 10px; text-decoration:none;
+    font-weight: 600; font-size: 1.05rem;
+    transition: all 0.3s;
+    border: 2px solid var(--text);
+  }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(219,18,44,0.25); }
+  .btn-primary svg { transition: transform 0.3s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+  
+  .btn-call {
+    display: inline-flex; align-items:center; gap: 10px;
+    background: #fff;
+    color: var(--text); padding: 18px 32px;
+    border-radius: 10px; text-decoration:none;
+    font-weight: 700; font-size: 1.05rem;
+    transition: all 0.3s;
+    border: 2px solid var(--border);
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .btn-call:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,21,51,0.1); }
+  .btn-call .phone-icon {
+    display: inline-flex; align-items:center; justify-content:center;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--accent-light); color: var(--accent);
+    animation: ring 2.5s infinite;
+  }
+  @keyframes ring {
+    0%, 80%, 100% { transform: rotate(0); }
+    84% { transform: rotate(-12deg); }
+    88% { transform: rotate(12deg); }
+    92% { transform: rotate(-8deg); }
+    96% { transform: rotate(8deg); }
+  }
+  
+  /* SECTIONS */
+  section { padding: 100px 0; position:relative; }
+  .section-label {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; margin-bottom: 20px;
+    letter-spacing: -0.02em; line-height: 1.1;
+    color: var(--text);
+  }
+  h2 .accent { color: var(--accent); font-style: italic; }
+  .section-intro {
+    font-size: 1.1rem; color: var(--text-dim);
+    max-width: 700px; margin-bottom: 60px;
+    line-height: 1.6;
+  }
+  
+  /* CARDS */
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(20,21,51,0.08);
+  }
+  .card-icon {
+    width: 48px; height: 48px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+  .card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem; margin-bottom: 10px; font-weight: 700;
+    color: var(--text);
+  }
+  .card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.5; }
+  
+  /* PHASE TIMELINE */
+  .phases { display:grid; gap: 16px; margin-top: 40px; }
+  .phase {
+    display: grid; grid-template-columns: 80px 1fr; gap: 24px;
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: all 0.3s;
+    align-items: start;
+  }
+  .phase:hover { border-color: var(--accent); transform: translateX(6px); }
+  .phase-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem; font-weight: 800;
+    color: var(--accent);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+  .phase-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem; margin-bottom: 10px; font-weight: 700;
+    color: var(--text);
+  }
+  .phase-content p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
+  .phase-tag {
+    display:inline-block; font-size: 0.75rem;
+    padding: 5px 12px; border-radius: 6px;
+    margin-top: 12px; font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .tag-green { background: rgba(16,185,129,0.12); color: #059669; }
+  .tag-blue { background: rgba(20,21,51,0.08); color: var(--text); }
+  .tag-red { background: var(--accent-light); color: var(--accent); }
+  
+  /* PROJECTION TABLE */
+  .projection-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    margin-top: 40px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left; padding: 16px 12px;
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--text-light); letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 22px 12px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: var(--accent); font-weight: 700; font-family: 'Syne', sans-serif; }
+  td small { color: var(--text-light); font-size: 0.8rem; display: block; margin-top: 2px; }
+  
+  .big-numbers {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 16px; margin-top: 40px;
+  }
+  .big-number {
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: all 0.3s;
+  }
+  .big-number:hover { border-color: var(--accent); }
+  .big-number .num {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+  .big-number .label { color: var(--text-dim); font-size: 0.9rem; font-weight: 500; }
+  
+  /* PRICING */
+  .pricing-card {
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 48px 40px;
+    position: relative;
+  }
+  .price-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .price-row:last-of-type { border-bottom: none; }
+  .price-row .label { color: var(--text-dim); font-weight: 500; }
+  .price-row .value { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--text); }
+  .price-row .value.big {
+    font-size: 1.4rem;
+    color: var(--accent);
+  }
+  .roi-box {
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--accent-light);
+    border: 1px solid rgba(219,18,44,0.2);
+    border-radius: 12px;
+  }
+  .roi-box h4 {
+    color: var(--accent-dark); margin-bottom: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+  }
+  .roi-box p { color: var(--text); line-height: 1.5; }
+  
+  /* FLEXIBILITY SECTION */
+  .flex-box {
+    background: var(--text);
+    color: #fff;
+    border-radius: 20px;
+    padding: 48px 40px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .flex-box::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(219,18,44,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .flex-box > * { position: relative; z-index: 1; }
+  .flex-box .section-label { color: var(--accent); }
+  .flex-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem; margin-bottom: 20px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .flex-box p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 20px; line-height: 1.6; }
+  .flex-box p strong { color: #fff; }
+  .flex-features {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 16px; margin-top: 28px;
+  }
+  .flex-feature {
+    display:flex; gap: 14px; align-items:start;
+    padding: 18px; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+  }
+  .flex-feature .check {
+    color: var(--accent); font-size: 1.3rem; flex-shrink:0;
+    font-weight: 700;
+  }
+  .flex-feature strong { color: #fff; display: block; margin-bottom: 4px; }
+  .flex-feature small { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.4; }
+  
+  /* CTA FINAL */
+  .cta-final {
+    text-align: center;
+    padding: 120px 24px;
+    background: var(--bg-alt);
+    position: relative;
+  }
+  .cta-final h2 { margin-bottom: 24px; }
+  .cta-final p {
+    font-size: 1.15rem; color: var(--text-dim);
+    margin-bottom: 40px; max-width: 640px; margin-left:auto; margin-right:auto;
+    line-height: 1.6;
+  }
+  .cta-buttons {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    justify-content: center; align-items: center;
+  }
+  .btn-huge {
+    display: inline-flex; align-items:center; gap: 12px;
+    background: var(--accent);
+    color: #fff; padding: 24px 48px;
+    border-radius: 12px; text-decoration:none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.2rem;
+    box-shadow: 0 8px 32px rgba(219,18,44,0.3);
+    transition: all 0.3s;
+    position: relative;
+    letter-spacing: -0.01em;
+  }
+  .btn-huge:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 16px 48px rgba(219,18,44,0.4);
+    background: var(--accent-dark);
+  }
+  .btn-call-big {
+    display: inline-flex; align-items:center; gap: 12px;
+    background: #fff;
+    color: var(--text); padding: 24px 40px;
+    border-radius: 12px; text-decoration:none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.15rem;
+    border: 2px solid var(--border);
+    transition: all 0.3s;
+    letter-spacing: -0.01em;
+  }
+  .btn-call-big:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(20,21,51,0.12); }
+  .btn-call-big .phone-icon {
+    display: inline-flex; align-items:center; justify-content:center;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent-light); color: var(--accent);
+    animation: ring 2.5s infinite;
+  }
+  .trust-note {
+    margin-top: 32px; color: var(--text-light); font-size: 0.88rem;
+  }
+  .trust-note a { color: var(--text-dim); text-decoration: none; font-weight: 600; }
+  .trust-note a:hover { color: var(--accent); }
+  
+  /* FLOATING CALL BUTTON (mobile) */
+  .floating-call {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    z-index: 99;
+    display: none;
+    align-items: center; justify-content: center;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(219,18,44,0.4);
+    text-decoration: none;
+    animation: ring 2.5s infinite;
+  }
+  
+  footer {
+    padding: 40px 24px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--text-dim); text-decoration: none; font-weight: 600; }
+  footer a:hover { color: var(--accent); }
+  
+  /* RESPONSIVE */
+  @media (min-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .phase { grid-template-columns: 100px 1fr; gap: 32px; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 70px 0; }
+    .projection-box, .pricing-card, .flex-box { padding: 28px 22px; }
+    th, td { padding: 14px 8px; font-size: 0.85rem; }
+    .phase { grid-template-columns: 1fr; gap: 12px; padding: 24px; }
+    .phase-num { font-size: 2rem; }
+    .nav-call span.call-text { display: none; }
+    .nav-call { padding: 10px 14px; }
+    .floating-call { display: flex; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-call { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">MDA<span>74</span></div>
+    <div class="nav-actions">
+      <a href="tel:+33759708222" class="nav-call">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="call-text">07 59 70 82 22</span>
+      </a>
+      <a href="#offer" class="nav-cta">Voir l'offre →</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Proposition exclusive · DMR ELEC · Haute-Savoie</div>
+    <h1>
+      David, votre temps vaut<br>
+      <span class="accent">mieux que du marketing.</span>
+    </h1>
+    <p>
+      Vous avez bâti DMR ELEC depuis 2015. Aujourd'hui, le marché de la borne de recharge (IRVE) explose en Haute-Savoie.
+      Nous gérons <strong style="color:var(--text);">100% de votre acquisition digitale</strong>. Vous restez sur vos chantiers.
+    </p>
+    <div class="hero-meta">
+      <div>📍 Annemasse · Haute-Savoie</div>
+      <div>⚡ Électricien certifié IRVE</div>
+      <div>📅 Proposition valable 30 jours</div>
+    </div>
+    <div class="hero-actions">
+      <a href="#offer" class="btn-primary">
+        Découvrir l'offre
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:+33759708222" class="btn-call">
+        <span class="phone-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        07 59 70 82 22
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="section-label">Le constat</span>
+    <h2>Le marché IRVE en Haute-Savoie est une <span class="accent">course contre la montre.</span></h2>
+    <p class="section-intro">
+      La loi LOM, les aides MaPrimeAdvenir, les obligations pour les copropriétés et entreprises : tout s'aligne.
+      Pendant que la plupart des électriciens généralistes ne communiquent pas sur l'IRVE,
+      <strong style="color:var(--text);">votre position de spécialiste peut devenir dominante sur votre territoire.</strong>
+    </p>
+    
+    <div class="grid-cards">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Copropriétés & Entreprises</h3>
+        <p>Les obligations légales poussent les syndics, hôtels et entreprises à équiper leurs parkings. La demande est forte et récurrente.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Recherches Locales</h3>
+        <p>"Installateur borne Annemasse", "IRVE certifié Annecy", "borne recharge Chamonix" : des recherches à très fort taux de conversion.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <h3>Votre Avantage</h3>
+        <p>10 ans d'expérience depuis 2015 + une base à Annemasse = vous avez déjà la crédibilité. Il ne manque que la visibilité digitale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--bg-alt);">
+  <div class="container">
+    <span class="section-label">Notre promesse</span>
+    <h2>Délégation <span class="accent">totale et absolue.</span></h2>
+    <p class="section-intro">
+      Vous signez. Nous faisons le reste. Aucun outil à maîtriser, aucune plateforme à gérer.
+      Vous recevez les notifications de rendez-vous qualifiés dans votre agenda.
+    </p>
+    
+    <div class="grid-cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Site Web "Vitrine IRVE"</h3>
+        <p>Design premium, tunnel de conversion, pages dédiées par ville (Annemasse, Annecy, Thonon, Chamonix, Cluses...).</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>Chatbot IA Qualifiant</h3>
+        <p>Répond 24/7, qualifie les projets (B2B/B2C, puissance, aides), prend RDV directement dans votre agenda.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>SEO Local Agressif</h3>
+        <p>Google Business optimisé, contenu technique, pages villes, backlinks locaux. Objectif : Top 3 en Haute-Savoie.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Réseaux Sociaux (8 posts/mois)</h3>
+        <p>LinkedIn pour les pros, Facebook pour les particuliers. Nous créons, publions et gérons les interactions.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <h3>Maintenance Prioritaire</h3>
+        <p>6h/mois incluses. Support sous 4h ouvrées. Rapport mensuel simple : "Voici vos leads du mois".</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Google Ads (à partir du mois 4)</h3>
+        <p>On n'active la pub payante qu'après avoir prouvé que le SEO convertit. Votre trésorerie est protégée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="section-label">Stratégie en 2 temps</span>
+    <h2>On <span class="accent">protège votre trésorerie.</span></h2>
+    <p class="section-intro">
+      Aucune agence sérieuse ne vous demande de dépenser en pub dès le jour 1.
+      Nous construisons d'abord, nous accélérons ensuite.
+    </p>
+    
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-num">01</div>
+        <div class="phase-content">
+          <h3>Mois 1 à 3 — Fondation & Preuve</h3>
+          <p>Mise en ligne du site, du chatbot, démarrage du SEO et des réseaux sociaux. <strong style="color:var(--text);">Budget publicitaire : 0 €.</strong></p>
+          <span class="phase-tag tag-green">✓ Objectif : prouver que le système convertit</span>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">02</div>
+        <div class="phase-content">
+          <h3>Mois 4 à 12 — Accélération Maîtrisée</h3>
+          <p>Une fois la preuve faite, on active Google Ads pour multiplier les résultats. Budget 300-500€/mois, directement versé à Google.</p>
+          <span class="phase-tag tag-blue">⚡ Scaling rentable</span>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">03</div>
+        <div class="phase-content">
+          <h3>Au-delà — Domination Locale</h3>
+          <p>Effet compound du SEO + ads optimisées. Coût par lead divisé par 10. DMR ELEC devient la référence IRVE en Haute-Savoie.</p>
+          <span class="phase-tag tag-red">🏆 Position de leader</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--bg-alt);">
+  <div class="container">
+    <span class="section-label">Projections 12 mois</span>
+    <h2>Le <span class="accent">chiffre d'affaires prévisionnel.</span></h2>
+    <p class="section-intro">
+      Basé sur un panier moyen de 5 000 € (mix B2B/B2C), un taux de conversion de 4% et un taux de closing de 25%.
+    </p>
+    
+    <div class="projection-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Période</th>
+            <th>Trafic</th>
+            <th>Leads</th>
+            <th>Devis signés</th>
+            <th>CA potentiel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mois 1-3</strong><small>Fondation</small></td>
+            <td>1 000 → 3 000</td>
+            <td>15 → 40</td>
+            <td>3 → 8</td>
+            <td><strong>15 000 € → 40 000 €</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Mois 4-6</strong><small>Traction</small></td>
+            <td>5 000 → 8 000</td>
+            <td>60 → 100</td>
+            <td>12 → 20</td>
+            <td><strong>60 000 € → 100 000 €</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Mois 7-9</strong><small>Autorité</small></td>
+            <td>10 000 → 15 000</td>
+            <td>120 → 180</td>
+            <td>25 → 35</td>
+            <td><strong>125 000 € → 175 000 €</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Mois 10-12</strong><small>Domination</small></td>
+            <td>18 000+</td>
+            <td>250+</td>
+            <td>50+</td>
+            <td><strong>250 000 €+</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="big-numbers">
+      <div class="big-number">
+        <div class="num">445+</div>
+        <div class="label">Leads qualifiés / an</div>
+      </div>
+      <div class="big-number">
+        <div class="num">500 000 €</div>
+        <div class="label">CA potentiel / an</div>
+      </div>
+      <div class="big-number">
+        <div class="num">~15 €</div>
+        <div class="label">Coût par lead moyen</div>
+      </div>
+      <div class="big-number">
+        <div class="num">×38</div>
+        <div class="label">ROI estimé</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="offer">
+  <div class="container">
+    <span class="section-label">L'offre</span>
+    <h2>Investissement <span class="accent">transparent.</span></h2>
+    <p class="section-intro">
+      Un seul prix. Zéro surprise. Zéro coût caché.
+    </p>
+    
+    <div class="pricing-card">
+      <h3 style="font-family:'Syne',sans-serif; font-size:1.6rem; margin-bottom:24px; color:var(--text);">Pack "Délégation Totale" IRVE</h3>
+      
+      <div class="price-row">
+        <span class="label">Frais de mise en place (one-shot)</span>
+        <span class="value">299 €</span>
+      </div>
+      <div class="price-row">
+        <span class="label">Premier mois d'abonnement</span>
+        <span class="value">549 €</span>
+      </div>
+      <div class="price-row">
+        <span class="label"><strong>À payer au démarrage</strong></span>
+        <span class="value big">848 €</span>
+      </div>
+      <div class="price-row">
+        <span class="label">Mois 2 à 12 (11 mois)</span>
+        <span class="value">549 € / mois</span>
+      </div>
+      <div class="price-row">
+        <span class="label">Google Ads (à partir du mois 4, en option)</span>
+        <span class="value">300-500 € / mois <small style="color:var(--text-light)">versé à Google</small></span>
+      </div>
+      
+      <div class="roi-box">
+        <h4>💡 Point de rentabilité</h4>
+        <p>
+          Dès le <strong style="color:var(--accent-dark);">2ème devis signé</strong> grâce à notre système, l'investissement annuel est intégralement remboursé.
+          Tout le reste est de la marge pure pour DMR ELEC.
+        </p>
+      </div>
+    </div>
+    
+    <div class="flex-box">
+      <span class="section-label">Engagement flexible</span>
+      <h3>Vous gardez le contrôle, à tout moment.</h3>
+      <p>
+        Nous savons que la confiance se construit avec le temps. C'est pourquoi nous proposons un modèle d'engagement unique :
+        <strong>à tout moment, dès que vous sentez que nous sommes à la hauteur de nos promesses et que les résultats sont là, vous pouvez ajuster l'offre à la baisse</strong> pour réduire les coûts et passer sur une formule plus allégée.
+      </p>
+      <p>
+        <strong>Pas de contrat rigide. Pas de mauvaise surprise.</strong> Un partenariat qui évolue avec votre croissance. Vous restez parce que ça fonctionne, pas parce qu'un contrat vous y oblige.
+      </p>
+      <div class="flex-features">
+        <div class="flex-feature">
+          <span class="check">✓</span>
+          <div>
+            <strong>Réduction possible</strong>
+            <small>Passez sur une offre allégée dès que les résultats sont au rendez-vous et que la confiance est installée</small>
+          </div>
+        </div>
+        <div class="flex-feature">
+          <span class="check">✓</span>
+          <div>
+            <strong>Pause possible</strong>
+            <small>Mettez en pause les prestations optionnelles (réseaux sociaux, contenu) quand vous le souhaitez</small>
+          </div>
+        </div>
+        <div class="flex-feature">
+          <span class="check">✓</span>
+          <div>
+            <strong>Transparence totale</strong>
+            <small>Rapports mensuels. Vous savez exactement où va chaque euro investi et combien de leads il génère</small>
+          </div>
+        </div>
+        <div class="flex-feature">
+          <span class="check">✓</span>
+          <div>
+            <strong>Zéro engagement piégé</strong>
+            <small>Vous restez parce que ça fonctionne, pas parce qu'un contrat vous y oblige. La confiance avant tout.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+    <span class="section-label">Prêt à dominer le marché IRVE ?</span>
+    <h2>David, transformons <span class="accent">DMR ELEC en référence régionale.</span></h2>
+    <p>
+      Vous avez l'expertise. Nous avons la méthode. Cliquez ci-dessous pour valider le lancement de votre stratégie digitale,
+      ou appelez-nous directement pour en discuter de vive voix.
+    </p>
+    <div class="cta-buttons">
+      <a href="mailto:infomda74@gmail.com?subject=J'opte%20pour%20l'offre%20-%20DMR%20ELEC&body=Bonjour,%0A%0AJe%20confirme%20mon%20accord%20pour%20l'offre%20Pack%20D%C3%A9l%C3%A9gation%20Totale%20IRVE%20pr%C3%A9sent%C3%A9e%20sur%20votre%20page.%0A%0APaiement%20de%20d%C3%A9marrage%20%3A%20848%20%E2%82%AC%20%28299%20%E2%82%AC%20%2B%20549%20%E2%82%AC%20premier%20mois%29%0A%0AJe%20suis%20pr%C3%AAt%20%C3%A0%20d%C3%A9marrer%20la%20phase%20de%20lancement.%0A%0ACordialement,%0ADavid%20Ramos%20-%20DMR%20ELEC" class="btn-huge">
+        ✓ J'opte pour l'offre
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:+33759708222" class="btn-call-big">
+        <span class="phone-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        07 59 70 82 22
+      </a>
+    </div>
+    <div class="trust-note">
+      🔒 Démarrage sous 7 jours · Proposition valable 30 jours · MDA74 · Haute-Savoie<br>
+      <a href="mailto:infomda74@gmail.com">infomda74@gmail.com</a> · <a href="tel:+33759708222">07 59 70 82 22</a>
+    </div>
+  </div>
+</section>
+
+<a href="tel:+33759708222" class="floating-call" aria-label="Appeler MDA74">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<footer>
+  <div class="container">
+    <p>© 2026 MDA74 · Agence digitale · Haute-Savoie · Proposition confidentielle pour DMR ELEC<br>
+    <a href="mailto:infomda74@gmail.com">infomda74@gmail.com</a> · <a href="tel:+33759708222">07 59 70 82 22</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
